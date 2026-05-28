@@ -220,7 +220,7 @@ function cbpVisaForslag(svar){
   var div=document.createElement("div");
   div.style.cssText="display:flex;flex-direction:column;gap:4px;margin-top:4px;";
   var html=forslag.map(function(f){return '<button onclick="cbpSend(null,\''+f+'\')" style="background:#fffbea;border:1px solid #f0e0a0;border-radius:8px;padding:6px 10px;font-size:0.78rem;color:#333;cursor:pointer;text-align:left;">'+f+'</button>';}).join("");
-  html+='<button onclick="cbpOffert()" style="background:#ffbf0f;border:none;border-radius:8px;padding:6px 10px;font-size:0.78rem;color:#000;cursor:pointer;text-align:left;">📋 Begär offert</button>';
+  html+='<button onclick="cbpOffert()" style="background:#ffbf0f;border:none;border-radius:8px;padding:6px 10px;font-size:0.78rem;color:#000;cursor:pointer;text-align:left;">Begar offert</button>';
   div.innerHTML=html;
   var m=document.getElementById("cbp-msgs");
   m.insertBefore(div,document.getElementById("cbp-typing"));
@@ -229,7 +229,6 @@ function cbpVisaForslag(svar){
 window.cbpSend=async function(e,text){
   var inp=document.getElementById("cbp-inp");
   var msg=text||inp.value.trim();if(!msg||loading)return;
-  if(msg.toLowerCase().indexOf("offert")>-1){inp.value="";cbpOffert();return;}
   inp.value="";loading=true;
   document.getElementById("cbp-send").disabled=true;
   cbpAddMsg(msg,"user");msgs.push({role:"user",content:msg});
