@@ -211,17 +211,15 @@ function cbpVisaBedomning(){
 }
 window.cbpBedomning=function(n){cbpAddMsg("Tack för din bedömning: "+"★".repeat(n)+"☆".repeat(5-n),"bot");};
 function cbpVisaForslag(svar){
-  var forslag=[];
-  if(svar.includes("badrum")||svar.includes("renovering")) forslag=["Vad kostar en badrumsrenovering?","Kan jag få ROT-avdrag?","Begär offert"];
-  else if(svar.includes("kök")) forslag=["Vad kostar en köksrenovering?","Hur lång tid tar det?","Begär offert"];
-  else if(svar.includes("tak")) forslag=["Vad kostar takläggning?","Kan jag få ROT-avdrag?","Begär offert"];
-  else if(svar.includes("rot")||svar.includes("avdrag")) forslag=["Vilka tjänster ger ROT-avdrag?","Hur ansöker man?","Begär offert"];
-  else if(svar.includes("bygglov")) forslag=["Vad kostar bygglov?","Hjälper ni med ansökan?","Begär offert"];
-  else if(svar.includes("mark")||svar.includes("dränering")) forslag=["Vad kostar dränering?","Berättigar det till ROT-avdrag?","Begär offert"];
-  else forslag=["Begär offert","Vilka tjänster erbjuder ni?","Hur kontaktar jag er?"];
+  var forslag=["Begär offert","Vilka tjänster erbjuder ni?","Hur kontaktar jag er?"];
+  if(svar.indexOf("badrum")>-1||svar.indexOf("renovering")>-1) forslag=["Vad kostar en badrumsrenovering?","Kan jag fa ROT-avdrag?","Begar offert"];
+  else if(svar.indexOf("tak")>-1) forslag=["Vad kostar taklaggning?","Kan jag fa ROT-avdrag?","Begar offert"];
+  else if(svar.indexOf("rot")>-1||svar.indexOf("avdrag")>-1) forslag=["Vilka tjanster ger ROT-avdrag?","Hur ansoker man?","Begar offert"];
+  else if(svar.indexOf("bygglov")>-1) forslag=["Vad kostar bygglov?","Hjalper ni med ansokan?","Begar offert"];
+  else if(svar.indexOf("mark")>-1) forslag=["Vad kostar dranering?","Berattigar det till ROT-avdrag?","Begar offert"];
   var div=document.createElement("div");
   div.style.cssText="display:flex;flex-direction:column;gap:4px;margin-top:4px;";
-  div.innerHTML=forslag.map(function(f){return '<button onclick="cbpSend(null,\''+f+'\')" style="background:#fffbea;border:1px solid #f0e0a0;border-radius:8px;padding:6px 10px;font-size:0.78rem;color:#333;cursor:pointer;text-align:left;">'+f+'</button>';}).join("");"background:#fffbea;border:1px solid #f0e0a0;border-radius:8px;padding:6px 10px;font-size:0.78rem;color:#333;cursor:pointer;text-align:left;">'+f+'</button>';}).join("");
+  div.innerHTML=forslag.map(function(f){return '<button onclick="cbpSend(null,\''+f+'\')" style="background:#fffbea;border:1px solid #f0e0a0;border-radius:8px;padding:6px 10px;font-size:0.78rem;color:#333;cursor:pointer;text-align:left;">'+f+'</button>';}).join("");
   var m=document.getElementById("cbp-msgs");
   m.insertBefore(div,document.getElementById("cbp-typing"));
   m.scrollTop=m.scrollHeight;
