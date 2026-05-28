@@ -229,6 +229,7 @@ function cbpVisaForslag(svar){
 window.cbpSend=async function(e,text){
   var inp=document.getElementById("cbp-inp");
   var msg=text||inp.value.trim();if(!msg||loading)return;
+  if(msg.toLowerCase().indexOf("offert")>-1&&!text){inp.value="";cbpOffert();return;}
   inp.value="";loading=true;
   document.getElementById("cbp-send").disabled=true;
   cbpAddMsg(msg,"user");msgs.push({role:"user",content:msg});
