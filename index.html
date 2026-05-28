@@ -239,6 +239,13 @@ window.cbpSend=async function(e,text){
 };
 })();
 </script>
+ <script>
+var pi=0,pls=["Skriv din fråga...","Write your question...","Schreib deine Frage...","Écrivez votre question..."];
+setInterval(function(){
+  var inp=document.getElementById("cbp-inp");
+  if(inp){pi=(pi+1)%pls.length;inp.placeholder=pls[pi];}
+},2000);
+</script>
 
 </body>
 </html>
