@@ -118,7 +118,8 @@ function cbpAddMsg(t,r){
   var m=document.getElementById("cbp-msgs"),d=document.createElement("div");
   d.className=r==="user"?"cbp-user":"cbp-bot";d.textContent=t;
   m.insertBefore(d,document.getElementById("cbp-typing"));
-  if(r==="user")m.scrollTop=m.scrollHeight;
+  if(r==="user"){m.scrollTop=m.scrollHeight;}
+  else{d.scrollIntoView({behavior:"smooth",block:"start"});}
 }
 
 window.cbpOffert=function(){
