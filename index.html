@@ -119,7 +119,7 @@ function cbpAddMsg(t,r){
   d.className=r==="user"?"cbp-user":"cbp-bot";d.textContent=t;
   m.insertBefore(d,document.getElementById("cbp-typing"));
   if(r==="user"){m.scrollTop=m.scrollHeight;}
-  else{d.scrollIntoView({behavior:"smooth",block:"start"});}
+  else{m.scrollTop=d.offsetTop-m.offsetTop;}
 }
 
 window.cbpOffert=function(){
